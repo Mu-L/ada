@@ -3,10 +3,10 @@ cmake_minimum_required(VERSION 3.16)
 project(ada
   DESCRIPTION "Fast spec-compliant URL parser"
   LANGUAGES C CXX
-  VERSION 2.7.8
+  VERSION 2.8.0
 )
 set(CMAKE_CXX_STANDARD 17)
-set(ADA_LIB_VERSION "2.7.8" CACHE STRING "ada library version")
+set(ADA_LIB_VERSION "2.8.0" CACHE STRING "ada library version")
 set(ADA_LIB_SOVERSION "2" CACHE STRING "ada library soversion")
 
 include(GNUInstallDirs)
@@ -59,6 +59,7 @@ if(ADA_TESTING OR ADA_BENCHMARKS OR ADA_TOOLS)
 
   if (ADA_TESTING AND NOT EMSCRIPTEN)
     if(Git_FOUND)
+      set(CTEST_TEST_TIMEOUT 5)
       message(STATUS "The tests are enabled.")
       add_subdirectory(tests)
     else()
